@@ -1,16 +1,118 @@
-# React + Vite
+# ChefMate AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ChefMate AI is a recipe generator that helps you find recipes using the ingredients you already have.
 
-Currently, two official plugins are available:
+Just enter your ingredients and the app sends them to the backend, where Google Gemini generates recipe suggestions. The generated recipes are then displayed in a simple and responsive UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+* Generate recipes from available ingredients
+* Get multiple recipe suggestions
+* View ingredients and cooking steps
+* Cooking time and difficulty level
+* Responsive design
+* Loading and error handling
+* Backend API integration
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+* React
+* Vite
+* Tailwind CSS
+* DaisyUI
+* Axios
+* JavaScript
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## How It Works
+
+```text
+Enter Ingredients
+       ↓
+Frontend
+       ↓
+Backend API
+       ↓
+Google Gemini
+       ↓
+Generated Recipes
+       ↓
+Recipe Cards
+```
+
+## Getting Started
+
+Clone the repository:
+
+```bash
+git clone <your-repository-url>
+cd chefmate-frontend
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env` file:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The app will be available at:
+
+```text
+http://localhost:5173
+```
+
+## Project Structure
+
+```text
+src/
+├── components/
+├── pages/
+├── services/
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+## Backend
+
+The frontend uses a separate backend for recipe generation and Gemini API integration.
+
+**Backend:** Node.js + Express + Google Gemini
+
+## Environment Variable
+
+| Variable       | Description     |
+| -------------- | --------------- |
+| `VITE_API_URL` | Backend API URL |
+
+## Build
+
+```bash
+npm run build
+```
+
+## Future Plans
+
+* Save favorite recipes
+* Recipe history
+* Dietary preferences
+* Cuisine filters
+* Nutrition information
+* User authentication
+
+## Author
+
+**Anupam Anand Ojha**
+
+Built with React and Google Gemini.
