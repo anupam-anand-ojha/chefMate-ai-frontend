@@ -1,18 +1,59 @@
-import {
-  Sparkles,
-  ArrowRight,
-  Leaf
-} from "lucide-react";
+import { useState } from "react";
+import { Sparkles } from "lucide-react";
 
 import Navbar from "../components/Navbar";
 import IngredientInput from "../components/IngredientInput";
 import Preferences from "../components/Preferences";
 import FeatureBar from "../components/FeatureBar";
+import RecipeResults from "../components/RecipeResults";
+
+import { generateRecipes } from "../services/recipeApi";
 
 const Home = () => {
+  const [ingredients, setIngredients] = useState([]);
+  const [ingredient, setIngredient] = useState("");
 
-  const generateRecipes = () => {
-    console.log("Generate recipes");
+  const [cuisine, setCuisine] = useState("");
+  const [mealType, setMealType] = useState("");
+  const [difficulty, setDifficulty] = useState("");
+
+  const [recipes, setRecipes] = useState([]);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleGenerateRecipes = async () => {
+    if (ingredients.length === 0) {
+      setError("Please add at least one ingredient.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError("");
+
+      const data = await generateRecipes({
+        ingredients,
+        cuisine,
+        mealType,
+        difficulty,
+      });
+
+      console.log("AI Response:", data);
+
+      setRecipes(data.recipes || []);
+
+    } catch (error) {
+      console.error(error);
+
+      setError(
+        error.response?.data?.message ||
+        "Something went wrong while generating recipes."
+      );
+
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -46,39 +87,64 @@ const Home = () => {
               just for you!
             </p>
 
-            {/* Decorative food area */}
             <div className="mt-10 flex items-center gap-4">
-
               <div className="text-6xl">🍅</div>
               <div className="text-5xl">🥬</div>
               <div className="text-6xl">🧄</div>
               <div className="text-5xl">🧅</div>
-
             </div>
 
           </div>
 
-          {/* Right Generator Card */}
+          {/* Generator */}
           <div className="card bg-base-100 border border-base-200 shadow-md">
 
             <div className="card-body p-6 md:p-8">
 
-              <IngredientInput />
+              <IngredientInput
+                ingredients={ingredients}
+                setIngredients={setIngredients}
+                ingredient={ingredient}
+                setIngredient={setIngredient}
+              />
 
-              <Preferences />
+              <Preferences
+                cuisine={cuisine}
+                setCuisine={setCuisine}
+                mealType={mealType}
+                setMealType={setMealType}
+                difficulty={difficulty}
+                setDifficulty={setDifficulty}
+              />
+
+              {error && (
+                <div className="alert alert-error mt-5">
+                  <span>{error}</span>
+                </div>
+              )}
 
               <button
-                onClick={generateRecipes}
+                onClick={handleGenerateRecipes}
+                disabled={loading}
                 className="btn bg-orange-500 hover:bg-orange-600 text-white border-none w-full mt-6 text-base"
               >
-                <Sparkles size={18} />
-                Generate Recipes
+
+                {loading ? (
+                  <>
+                    <span className="loading loading-spinner loading-sm"></span>
+                    ChefMate is cooking...
+                  </>
+                ) : (
+                  <>
+                    <Sparkles size={18} />
+                    Generate Recipes
+                  </>
+                )}
+
               </button>
 
               <div className="text-center text-sm text-gray-400 mt-4">
-                more filling&nbsp; • &nbsp;
-                less ingredients&nbsp; • &nbsp;
-                quick & easy ⚡
+                AI powered • Personalized • Quick & easy
               </div>
 
             </div>
@@ -88,6 +154,9 @@ const Home = () => {
         </section>
 
         <FeatureBar />
+
+        {/* Actual AI Results */}
+        <RecipeResults recipes={recipes} />
 
       </main>
 

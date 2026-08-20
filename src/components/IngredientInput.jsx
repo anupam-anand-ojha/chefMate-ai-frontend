@@ -1,22 +1,22 @@
-import { useState } from "react";
 import { Plus, X } from "lucide-react";
 
-const IngredientInput = () => {
-  const [ingredient, setIngredient] = useState("");
-
-  const [ingredients, setIngredients] = useState([
-    "Tomato",
-    "Onion",
-    "Garlic",
-    "Paneer",
-    "Capsicum",
-    "Spinach"
-  ]);
-
+const IngredientInput = ({
+  ingredients,
+  setIngredients,
+  ingredient,
+  setIngredient,
+}) => {
   const addIngredient = () => {
-    if (!ingredient.trim()) return;
+    const value = ingredient.trim();
 
-    setIngredients([...ingredients, ingredient.trim()]);
+    if (!value) return;
+
+    if (ingredients.includes(value)) {
+      setIngredient("");
+      return;
+    }
+
+    setIngredients([...ingredients, value]);
     setIngredient("");
   };
 
@@ -28,13 +28,11 @@ const IngredientInput = () => {
 
   return (
     <div>
-
       <h2 className="text-xl font-semibold mb-4">
         Add your ingredients
       </h2>
 
       <div className="flex gap-3">
-
         <input
           type="text"
           placeholder="Type an ingredient and press Enter"
@@ -42,7 +40,9 @@ const IngredientInput = () => {
           value={ingredient}
           onChange={(e) => setIngredient(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === "Enter") addIngredient();
+            if (e.key === "Enter") {
+              addIngredient();
+            }
           }}
         />
 
@@ -53,11 +53,9 @@ const IngredientInput = () => {
           <Plus size={18} />
           Add
         </button>
-
       </div>
 
       <div className="flex flex-wrap gap-2 mt-4">
-
         {ingredients.map((item) => (
           <div
             key={item}
@@ -70,9 +68,7 @@ const IngredientInput = () => {
             </button>
           </div>
         ))}
-
       </div>
-
     </div>
   );
 };

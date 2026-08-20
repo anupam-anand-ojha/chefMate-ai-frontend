@@ -1,4 +1,11 @@
-const Preferences = () => {
+const Preferences = ({
+  cuisine,
+  setCuisine,
+  mealType,
+  setMealType,
+  difficulty,
+  setDifficulty,
+}) => {
   return (
     <div className="border-t border-base-200 mt-7 pt-6">
 
@@ -18,12 +25,17 @@ const Preferences = () => {
             </span>
           </div>
 
-          <select className="select select-bordered">
-            <option>Indian</option>
-            <option>Italian</option>
-            <option>Chinese</option>
-            <option>Mexican</option>
-            <option>American</option>
+          <select
+            className="select select-bordered"
+            value={cuisine}
+            onChange={(e) => setCuisine(e.target.value)}
+          >
+            <option value="">Any Cuisine</option>
+            <option value="Indian">Indian</option>
+            <option value="Italian">Italian</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Mexican">Mexican</option>
+            <option value="American">American</option>
           </select>
         </label>
 
@@ -34,11 +46,16 @@ const Preferences = () => {
             </span>
           </div>
 
-          <select className="select select-bordered">
-            <option>Breakfast</option>
-            <option>Lunch</option>
-            <option>Dinner</option>
-            <option>Snack</option>
+          <select
+            className="select select-bordered"
+            value={mealType}
+            onChange={(e) => setMealType(e.target.value)}
+          >
+            <option value="">Any Meal</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">Snack</option>
           </select>
         </label>
 
@@ -49,15 +66,19 @@ const Preferences = () => {
             </span>
           </div>
 
-          <select className="select select-bordered">
-            <option>Easy</option>
-            <option>Medium</option>
-            <option>Hard</option>
+          <select
+            className="select select-bordered"
+            value={difficulty}
+            onChange={(e) => setDifficulty(e.target.value)}
+          >
+            <option value="">Any Difficulty</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
           </select>
         </label>
 
       </div>
-
     </div>
   );
 };
