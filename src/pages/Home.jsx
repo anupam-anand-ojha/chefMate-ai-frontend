@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Sparkles } from "lucide-react";
 
 import Navbar from "../components/Navbar";
@@ -6,6 +6,7 @@ import IngredientInput from "../components/IngredientInput";
 import Preferences from "../components/Preferences";
 import FeatureBar from "../components/FeatureBar";
 import RecipeResults from "../components/RecipeResults";
+import RecipeDetails from "./RecipeDetails";
 
 import { generateRecipes } from "../services/recipeApi";
 
@@ -18,9 +19,12 @@ const Home = () => {
   const [difficulty, setDifficulty] = useState("");
 
   const [recipes, setRecipes] = useState([]);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const recipesRef = useRef(null);
 
   const handleGenerateRecipes = async () => {
     if (ingredients.length === 0) {
@@ -43,30 +47,48 @@ const Home = () => {
 
       setRecipes(data.recipes || []);
 
+      // Scroll to recipes
+      setTimeout(() => {
+        recipesRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 100);
+
     } catch (error) {
-      console.error(error);
+      console.error("Recipe generation error:", error);
 
       setError(
         error.response?.data?.message ||
-        "Something went wrong while generating recipes."
+          "Something went wrong while generating recipes."
       );
-
     } finally {
       setLoading(false);
     }
   };
 
+  // Show recipe details
+  if (selectedRecipe) {
+    return (
+      <RecipeDetails
+        recipe={selectedRecipe}
+        onBack={() => setSelectedRecipe(null)}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#fffdf9]">
 
+      {/* Navbar */}
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-5 md:px-10 py-10">
 
-        {/* Hero */}
+        {/*----------------HERO-----------------*/}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
-          {/* Left */}
+          {/* LEFT */}
           <div className="lg:pl-8">
 
             <div className="badge badge-outline border-green-400 text-green-700 px-4 py-4 mb-6">
@@ -96,11 +118,12 @@ const Home = () => {
 
           </div>
 
-          {/* Generator */}
+          {/* RIGHT - GENERATOR */}
           <div className="card bg-base-100 border border-base-200 shadow-md">
 
             <div className="card-body p-6 md:p-8">
 
+              {/* Ingredients */}
               <IngredientInput
                 ingredients={ingredients}
                 setIngredients={setIngredients}
@@ -108,6 +131,7 @@ const Home = () => {
                 setIngredient={setIngredient}
               />
 
+              {/* Preferences */}
               <Preferences
                 cuisine={cuisine}
                 setCuisine={setCuisine}
@@ -117,12 +141,14 @@ const Home = () => {
                 setDifficulty={setDifficulty}
               />
 
+              {/* Error */}
               {error && (
                 <div className="alert alert-error mt-5">
                   <span>{error}</span>
                 </div>
               )}
 
+              {/* Generate Button */}
               <button
                 onClick={handleGenerateRecipes}
                 disabled={loading}
@@ -148,15 +174,23 @@ const Home = () => {
               </div>
 
             </div>
-
           </div>
 
         </section>
 
+        {/* --- FEATURES ------*/}
         <FeatureBar />
 
-        {/* Actual AI Results */}
-        <RecipeResults recipes={recipes} />
+        {/* --- RECIPES---*/}
+        <div
+          ref={recipesRef}
+          className="scroll-mt-10"
+        >
+          <RecipeResults
+            recipes={recipes}
+            onView={setSelectedRecipe}
+          />
+        </div>
 
       </main>
 

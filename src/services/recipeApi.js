@@ -5,7 +5,7 @@ const API = axios.create({
 });
 
 export const generateRecipes = async (data) => {
-  const response = await API.post("/recipes/generate", data);
+  const response = await API.post("/recipe/generate", data);
 
   return response.data;
 };

@@ -1,20 +1,21 @@
-import { Clock, ChefHat, ArrowRight, Bookmark } from "lucide-react";
+import {
+  Clock,
+  ChefHat,
+  ArrowRight,
+  Bookmark,
+} from "lucide-react";
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipe, onView }) => {
   return (
     <div className="card bg-base-100 border border-base-200 shadow-sm hover:shadow-md transition-shadow">
 
-      {/* Image */}
       <figure className="h-48 bg-orange-50">
-        <div className="text-7xl">
-          🍛
-        </div>
+        <div className="text-7xl">🍛</div>
       </figure>
 
       <div className="card-body">
 
         <div className="flex items-start justify-between gap-3">
-
           <div>
             <h2 className="card-title text-xl text-slate-800">
               {recipe.name}
@@ -28,10 +29,8 @@ const RecipeCard = ({ recipe }) => {
           <button className="btn btn-ghost btn-circle">
             <Bookmark size={19} />
           </button>
-
         </div>
 
-        {/* Meta */}
         <div className="flex items-center gap-3 mt-4">
 
           <div className="badge bg-orange-50 text-orange-600 border-none gap-1 px-3 py-3">
@@ -48,7 +47,10 @@ const RecipeCard = ({ recipe }) => {
 
         <div className="card-actions justify-end mt-5">
 
-          <button className="btn btn-ghost text-orange-500 hover:bg-orange-50">
+          <button
+            onClick={() => onView(recipe)}
+            className="btn btn-ghost text-orange-500 hover:bg-orange-50"
+          >
             View Recipe
             <ArrowRight size={17} />
           </button>

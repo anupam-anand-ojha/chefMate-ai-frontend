@@ -1,7 +1,7 @@
 import { Sparkles } from "lucide-react";
 import RecipeCard from "./RecipeCard";
 
-const RecipeResults = ({ recipes }) => {
+const RecipeResults = ({ recipes, onView }) => {
   if (!recipes || recipes.length === 0) {
     return null;
   }
@@ -32,6 +32,7 @@ const RecipeResults = ({ recipes }) => {
           <RecipeCard
             key={index}
             recipe={recipe}
+            onView={onView}
           />
         ))}
 
