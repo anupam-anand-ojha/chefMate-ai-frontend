@@ -17,11 +17,11 @@ const RecipeCard = ({ recipe, onView }) => {
 
         <div className="flex items-start justify-between gap-3">
           <div>
-            <h2 className="card-title text-xl text-slate-800">
+            <h2 className="card-title text-xl text-orange-400">
               {recipe.name}
             </h2>
 
-            <p className="text-sm text-gray-500 mt-2 line-clamp-2">
+            <p className="text-sm text-white/70 mt-2 line-clamp-2">
               {recipe.description}
             </p>
           </div>
