@@ -5,6 +5,9 @@ import {
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
+import IngredientInput from "../components/IngredientInput";
+import Preferences from "../components/Preferences";
+import FeatureBar from "../components/FeatureBar";
 
 const Home = () => {
 
@@ -55,10 +58,36 @@ const Home = () => {
 
           </div>
 
+          {/* Right Generator Card */}
+          <div className="card bg-base-100 border border-base-200 shadow-md">
+
+            <div className="card-body p-6 md:p-8">
+
+              <IngredientInput />
+
+              <Preferences />
+
+              <button
+                onClick={generateRecipes}
+                className="btn bg-orange-500 hover:bg-orange-600 text-white border-none w-full mt-6 text-base"
+              >
+                <Sparkles size={18} />
+                Generate Recipes
+              </button>
+
+              <div className="text-center text-sm text-gray-400 mt-4">
+                more filling&nbsp; • &nbsp;
+                less ingredients&nbsp; • &nbsp;
+                quick & easy ⚡
+              </div>
+
+            </div>
+
+          </div>
 
         </section>
 
-     
+        <FeatureBar />
 
       </main>
 
