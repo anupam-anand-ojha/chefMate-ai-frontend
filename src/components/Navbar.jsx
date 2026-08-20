@@ -9,7 +9,7 @@ const Navbar = () => {
         <a className="flex items-center gap-2 text-2xl font-bold">
           <ChefHat size={30} strokeWidth={2.2} />
 
-          <span className="text-slate-800">
+          <span className="text-white">
             ChefMate{" "}
             <span className="text-orange-500">AI</span>
           </span>
@@ -26,7 +26,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <a>My Recipes</a>
+            <a>Best Recipes</a>
           </li>
 
           <li>

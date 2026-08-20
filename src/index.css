@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #fffdf9;
+}
+
+button {
+  transition: all 0.2s ease;
+}
