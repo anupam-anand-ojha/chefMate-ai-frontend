@@ -1,4 +1,5 @@
-import {ChefHat,Sun, Moon, Sparkles} from "lucide-react";
+import { ChefHat, Sun, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -6,36 +7,52 @@ const Navbar = () => {
 
       {/* Logo */}
       <div className="flex-1">
-        <a className="flex items-center gap-2 text-2xl font-bold">
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-2xl font-bold"
+        >
           <ChefHat size={30} strokeWidth={2.2} />
 
           <span className="text-white">
             ChefMate{" "}
-            <span className="text-orange-500">AI</span>
+            <span className="text-orange-500">
+              AI
+            </span>
           </span>
-        </a>
+        </Link>
       </div>
 
       {/* Desktop Menu */}
       <div className="hidden md:flex">
         <ul className="menu menu-horizontal gap-2 text-[15px]">
+
           <li>
-            <a className="text-orange-500 font-medium border-b-2 border-orange-500 rounded-none">
+            <Link
+              to="/"
+              className="text-orange-500 font-medium border-b-2 border-orange-500 rounded-none"
+            >
               Home
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/best-recipes">
+              Best Recipes
+            </Link>
+          </li>
+
+          <li>
+            <a>
+              Saved
             </a>
           </li>
 
           <li>
-            <a>Best Recipes</a>
+            <Link to="/about">
+              About
+            </Link>
           </li>
 
-          <li>
-            <a>Saved</a>
-          </li>
-
-          <li>
-            <a>About</a>
-          </li>
         </ul>
       </div>
 
@@ -46,12 +63,16 @@ const Navbar = () => {
           <Sun size={20} />
         </button>
 
-        <button className="btn bg-orange-500 hover:bg-orange-600 text-white border-none rounded-lg px-5">
+        <Link
+          to="/"
+          className="btn bg-orange-500 hover:bg-orange-600 text-white border-none rounded-lg px-5"
+        >
           <Sparkles size={17} />
           Generate Recipes
-        </button>
+        </Link>
 
       </div>
+
     </div>
   );
 };
