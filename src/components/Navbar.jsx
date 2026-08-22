@@ -57,7 +57,7 @@ const Navbar = () => {
       <div className="hidden md:flex flex-1 justify-start gap-4">
 
         {/* Theme Switch */}
-        <label className="btn swap swap-rotate">
+        <label className="hidden btn swap swap-rotate">
 
           <input
             type="checkbox"
@@ -113,13 +113,13 @@ const Navbar = () => {
         >
 
           <li>
-            <Link to="/">
+            <Link to="/"  className="hover:text-orange-500 transition-colors duration-200">
               Home
             </Link>
           </li>
 
           <li>
-            <Link to="/best-recipes">
+            <Link to="/best-recipes"  className="hover:text-orange-500 transition-colors duration-200">
               Best Recipes
             </Link>
           </li>
