@@ -76,11 +76,11 @@ const About = () => {
                 👨‍🍳
               </div>
 
-              <h3 className="text-2xl font-bold text-center text-slate-800">
+              <h3 className="text-2xl font-bold text-center text-green-300">
                 Your AI Kitchen Assistant
               </h3>
 
-              <p className="text-center text-gray-500 mt-3">
+              <p className="text-center text-white-500 mt-3">
                 Less thinking. Less searching. More cooking.
               </p>
 
@@ -210,7 +210,7 @@ const About = () => {
                 1
               </div>
 
-              <h3 className="font-bold text-lg mt-5">
+              <h3 className="font-bold text-green-500 text-lg mt-5">
                 Add Ingredients
               </h3>
 
@@ -227,7 +227,7 @@ const About = () => {
                 2
               </div>
 
-              <h3 className="font-bold text-lg mt-5">
+              <h3 className="font-bold text-green-500 text-lg mt-5">
                 Choose Preferences
               </h3>
 
@@ -244,7 +244,7 @@ const About = () => {
                 3
               </div>
 
-              <h3 className="font-bold text-lg mt-5">
+              <h3 className="font-bold text-green-500 text-lg mt-5">
                 Get Your Recipe
               </h3>
 
