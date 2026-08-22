@@ -74,7 +74,7 @@ const RecipeDetails = ({ recipe, onBack }) => {
 
             <div className="card-body">
 
-              <h2 className="card-title text-xl">
+              <h2 className="card-title  text-yellow-300  text-xl">
                 Ingredients
               </h2>
 
@@ -85,7 +85,7 @@ const RecipeDetails = ({ recipe, onBack }) => {
                 {recipe.ingredients?.map((ingredient, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-3 text-gray-600"
+                    className="flex items-start gap-3 text-green-300"
                   >
 
                     <div className="w-6 h-6 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center shrink-0">
@@ -129,7 +129,7 @@ const RecipeDetails = ({ recipe, onBack }) => {
 
                   <div className="card bg-base-100 border border-base-200 shadow-sm flex-1">
                     <div className="card-body p-5">
-                      <p className="text-gray-600 leading-7">
+                      <p className="text-white/90 leading-7">
                         {step}
                       </p>
                     </div>
