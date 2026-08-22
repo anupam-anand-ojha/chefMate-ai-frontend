@@ -50,3 +50,109 @@ button {
   --depth: 1;
   --noise: 1;
 }
+
+@plugin "daisyui/theme" {
+  name: "chefmate";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+
+  /* Main */
+  --color-base-100: #fffdf9;
+  --color-base-200: #fff7ed;
+  --color-base-300: #fed7aa;
+  --color-base-content: #1e293b;
+
+  /* Orange */
+  --color-primary: #f97316;
+  --color-primary-content: #ffffff;
+
+  /* Green */
+  --color-secondary: #16a34a;
+  --color-secondary-content: #ffffff;
+
+  /* Accent */
+  --color-accent: #fb923c;
+  --color-accent-content: #ffffff;
+
+  /* Neutral */
+  --color-neutral: #334155;
+  --color-neutral-content: #ffffff;
+
+  /* Status */
+  --color-info: #3b82f6;
+  --color-info-content: #ffffff;
+
+  --color-success: #22c55e;
+  --color-success-content: #ffffff;
+
+  --color-warning: #f59e0b;
+  --color-warning-content: #ffffff;
+
+  --color-error: #ef4444;
+  --color-error-content: #ffffff;
+
+  /* Rounded UI */
+  --radius-selector: 0.75rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1rem;
+
+  /* Sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* Border */
+  --border: 1px;
+
+  /* Effects */
+  --depth: 1;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "chefmate-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: "dark";
+
+  --color-base-100: #171411;
+  --color-base-200: #211c17;
+  --color-base-300: #302820;
+  --color-base-content: #f8fafc;
+
+  --color-primary: #fb923c;
+  --color-primary-content: #1c1917;
+
+  --color-secondary: #4ade80;
+  --color-secondary-content: #052e16;
+
+  --color-accent: #fdba74;
+  --color-accent-content: #431407;
+
+  --color-neutral: #292524;
+  --color-neutral-content: #fafaf9;
+
+  --color-info: #60a5fa;
+  --color-info-content: #172554;
+
+  --color-success: #4ade80;
+  --color-success-content: #052e16;
+
+  --color-warning: #fbbf24;
+  --color-warning-content: #451a03;
+
+  --color-error: #f87171;
+  --color-error-content: #450a0a;
+
+  --radius-selector: 0.75rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1rem;
+
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  --border: 1px;
+
+  --depth: 1;
+  --noise: 0;
+}
